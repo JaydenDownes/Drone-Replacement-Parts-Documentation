@@ -1,0 +1,474 @@
+﻿<!-- Website Designed and Coded by Jayden Downes (Jayden@Vectra.Space) Under The GNU GPLv3 Licence -->
+<!-- See licence.txt for more infomation on the GNU GPLv3 Lience -->
+<!-- This project is also avaliable on GitHub at: https://github.com/JaydenDownes/Altra-01-Robotic-Arm-Documentation -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+	<meta content="" name="description">
+	<meta content="" name="author">
+	<link href="assets/img/basic/favicon.ico" rel="icon" type="image/x-icon">
+	<title>ALTRA 01 - Robotic Arm</title><!-- CSS -->
+	<link href="assets/css/app.css" rel="stylesheet">
+	<style>
+	       .loader {
+	           position: fixed;
+	           left: 0;
+	           top: 0;
+	           width: 100%;
+	           height: 100%;
+	           background-color: #F5F8FA;
+	           z-index: 9998;
+	           text-align: center;
+	       }
+
+	       .plane-container {
+	           position: absolute;
+	           top: 50%;
+	           left: 30%;
+	       }
+	</style>
+	<link rel="stylesheet" href="https://cdn.plyr.io/3.4.3/plyr.css">
+</head>
+<body>
+	<!-- Pre loader -->
+	<div class="loader" id="loader">
+		<div class="plane-container">
+			<div class="l-s-2 blink">
+				LOADING ALTRA-01 ROBOTIC ARM
+			</div>
+		</div>
+	</div>
+	<div class="paper-loading" id="app">
+		<main class="single">
+			<!-- Header -->
+			<div class="content-wrapper">
+				<div class="container">
+					<div class="col-xl-10 mx-md-auto">
+						<article class="post">
+							<p class="excerpt2">Altra-01 - Building &amp; Constructing a Robotic Arm 2018 - Jayden Downes.</p> <a name="Arm"></a>
+							<div class="sketchfab-embed-wrapper"> 
+								<iframe frameborder="0" height="480" src="https://sketchfab.com/models/b5d3a96ba11f402cae6a95ab6bc50c29/embed?autospin=0.2&amp;autostart=1" width="100%"></iframe>
+                            </div><br><button class="btn btn-primary btn-lg btn-block" onclick="toggle_visibility('contents');"><small>Hide/Show Contents - Marking Criteria</small></button><br>
+                            <div id="contents">    
+                                <ul class="list-group">
+                                <li class="list-group-item"><a href="#journal">Journal</a></li>
+                                <li class="list-group-item"><a href="https://drive.google.com/open?id=1P7JaPehqHrY-c261_3i63RGWOXhASHel">Brainstorming</a></li>
+                                <li class="list-group-item"><a href="#research">Research</a></li>
+                                <li class="list-group-item">Drawings - <a href="#G2Pulley">G2 Pulley</a> - <a href="#3PartPulley">3 Part Pulley</a> - <a href="#Frame">Frame</a> - <a href="#TurnMechanism">Turn Mechanism</a> - <a href="#Arm">Whole Robotic Arm</a> - <a href="https://drive.google.com/open?id=1P7JaPehqHrY-c261_3i63RGWOXhASHel">Concepts</a></li>
+                                    <li class="list-group-item">Lists - <a href="#journal">TimeLine</a> - <a href="#ProductionSequance">Production Sequance</a> - <a href="#Materials">Costs, Materials</a> - <a href="https://drive.google.com/drive/folders/14RCGcUFHsC4CkNHbIe0ehc2hye6hQW7I?usp=sharing">Cutting &amp; Printing List</a></li>
+                                <li class="list-group-item">Test - <a>DataSheet (Only avalible after Arm is tested)</a> - <a href="/photos">Photos</a> - <a href="https://drive.google.com/open?id=1CiX6G0XKaGFteN2d3EIsYUep0rW3i09P">TickSheet</a></li>
+                                <li class="list-group-item"><a href="#evaluation">Evalutation</a></li>
+                                <li class="list-group-item"><a href="#references">References</a></li>
+                                </ul>
+                            </div>
+							<br>
+							<br>
+							<h3>Design Brief:</h3>
+							<p>Currently, there is a lack of automation in construction, most work is currently done by builders manually which can easily result in injury or buildings taking long periods of time to build. You are to create a robotic arm that is capable of building houses and larger structures. The robotic arm needs to be able to lift heavy loads, be easily transportable and very heavy duty as it will be placed on construction sites. The robot should also be able to reach into places that would normally be difficult for cranes and must be faster than original methods of building structures and moving objects/materials.</p><br>
+							<h3>Specifacation (Ideas):</h3>
+							<ul class="iconList p-t-b-20">
+								<li>Mounting points on claw for safety to secure load.</li>
+								<li>Concrete and other building materials can’t easily stick to the arm's material or easily break the arm if they were to fall on any part of the robot.</li>
+								<li>Extra safety features like sensors to stop the arm before it hits something or someone.</li>
+								<li>Compact - Must be able to packed up with ease (Modular).</li>
+								<li>Must be redundant for safety (If one belt or pulley breaks another one will support the load) – Auto belt tensioning.</li>
+								<li>It must be hard for operators get anything stuck in the machine such as hands or objects.</li>
+								<li>The robot must be precise.</li>
+								<li>Must include mounting holes for the base to be secured to the ground easily.</li>
+								<li>Failsafe's built in (ensures G2 timing belts won’t slip and cause the arm to drop).</li>
+							</ul><br>
+							<h3>Analysis:</h3>
+							<p>Current designs for robotic arms include; Polar, cylindrical, Cartesian, Joined-arm and SCARA robotic arms. These designs all come with advantages and disadvantages, for example, a precise robotic arm is usually slow in order to ensure the accuracy of the motors and to prevent inertia which would make a robot unprecise due to “play” if not built to the proper specification for the speed of the robot. Another issue that is commonly found in robotic arms is the material the arm is made of and what it is actually capable of lifting. Usually, robotic arms are made up of high-strength low-alloy (HSLA) steels. HSLA steels contain relatively low levels of carbon, typically about 0.05%. They also contain a small amount of one or more other elements that add strength. These elements include chromium, nickel, molybdenum, vanadium, titanium, and niobium. Besides being strong, HSLA steels are resistant to atmospheric corrosion and are better suited to welding than carbon steels which are used in applications where the steel is not needed to be as strong as that of a crane or robotic arm.</p><br>
+							<h3>Research:</h3><br>
+							<table class="table table-bordered table-striped">
+								<tbody>
+									<tr>
+										<th scope="row">Load Strength</th>
+										<td>520KG</td>
+										<td>Small</td>
+										<td>N/A</td>
+                                        <td>100gm</td>
+									</tr>
+									<tr>
+										<th scope="row">Materials</th>
+										<td>Stainless Steel, HSLA Steel, Aluminum</td>
+										<td>Plastic (Can be made out of any 3D printing material).</td>
+										<td>HSLA Steel, Aluminium, Steel.</td>
+                                        <td>Injection Molded Plastic</td>
+									</tr>
+									<tr>
+										<th scope="row">Mounting Positions</th>
+										<td>✓</td>
+										<td>X</td>
+										<td>✓</td>
+                                        <td>X</td>
+									</tr>
+									<tr>
+										<th scope="row">IP Rating</th>
+										<td>65</td>
+										<td>23</td>
+										<td>N/A</td>
+                                        <td>7</td>
+									</tr>
+									<tr>
+										<th scope="row">No. Axis'</th>
+										<td>6</td>
+										<td>5</td>
+										<td>7</td>
+                                        <td>5</td>
+									</tr>
+									<tr>
+										<th scope="row">Reliablilty</th>
+										<td>High (Sensors)</td>
+										<td>High (Stepper Motors - Rare failiture)</td>
+										<td>High (Sensors, Stepper motors are from reliable source)</td>
+                                        <td>Low - No sensors - No redundancy motors - cheap 12v Standard motors.</td>
+									</tr>
+									<tr>
+										<th scope="row">Motors</th>
+										<td>Clearpath Servos</td>
+										<td>Nema 17 &amp; 23</td>
+										<td>ClearPath Servo</td>
+                                        <td>12v Brushed Motor + Gear stepdown.</td>
+									</tr>
+									<tr>
+										<th scope="row">Redundancy</th>
+										<td>Low</td>
+										<td>Low (Only one belt per axis)</td>
+										<td>None</td>
+                                        <td>Medium (Worm Gears and dual plates to hold main arm).</td>
+									</tr>
+									<tr>
+										<th scope="row">Images</th>
+										<td><img src="https://www.aec.at/aeblog/files/2017/03/Johannes-Braumann_Robot-Doing-Nothing_886x590.jpg"></td>
+										<td><img src="https://files.cults3d.com/uploaders/11417472/illustration-file/1469701604-32610-1748/IMG_7111_ok1_large.jpg"></td>
+										<td><img src="https://i.pinimg.com/736x/77/d7/4f/77d74fb8faf71c6c68663f600463e46b--industrial-robots-robot-kits.jpg"></td>
+                                        <td><img src="http://www.globalpc.co.nz/prodimages/K1107.jpg"></td>
+									</tr>
+								</tbody>
+							</table><br> <a name="Materials"></a>
+							<br>
+							<h3>Materials <small>(For Prototype)</small>:</h3> 
+							<table class="table table-bordered table-striped">
+								<tbody>
+									<tr>
+										<th scope="row">Material / Item</th>
+										<td>PLA (Polylactic acid) Plastic Filiment - 1.75mm Ø</td>
+										<td>ABS (Acrylonitrile butadiene styrene) Plastic Filiment - 1.75mm Ø</td>
+										<td>Stainless Steel Screws</td>
+									</tr>
+									<tr>
+										<th scope="row">Density kg m<sup>-3</sup></th>
+										<td>Varies per manufacture and can be found in the product specifications.</td>
+										<td>Varies per manufacture and can be found in the product specifications.</td>
+										<td>7600</td>
+									</tr>
+									<tr>
+										<th scope="row">Elastic (Young’s) modulus kN mm<sup>-2</sup></th>
+										<td>3.5</td>
+										<td>2.3</td>
+										<td>200</td>
+									</tr>
+									<tr>
+										<th scope="row">Ultimate tensile strength N mm<sup>-2</sup></th>
+										<td>50</td>
+										<td>40</td>
+										<td>860</td>
+									</tr>
+									<tr>
+										<th scope="row">Yield stress N mm<sup>-2</sup></th>
+										<td>6</td>
+										<td>48.3</td>
+										<td>502</td>
+									</tr>
+									<tr>
+										<th scope="row">Corrosion Proof</th>
+										<td>✓</td>
+										<td>✓</td>
+										<td>✓</td>
+									</tr>
+									<tr>
+										<th scope="row">Cost</th>
+										<td><iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http://ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=vectraspace-20&marketplace=amazon&region=US&placement=B00J0ECR5I&asins=B00J0ECR5I&linkId=9418e971f04389912d26ef48e3295966&show_border=true&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff" style="width:120px;height:240px;"></iframe> <iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http://ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=vectraspace-20&marketplace=amazon&region=US&placement=B00J0GMMP6&asins=B00J0GMMP6&linkId=9087a26927d0e115731a51654d0b292b&show_border=true&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff" style="width:120px;height:240px;"></iframe></td>
+										<td><iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http:////ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=vectraspace-20&marketplace=amazon&region=US&placement=B00J0H8EWA&asins=B00J0H8EWA&linkId=4c9644baf47bf3ff55a0d3580f0f9a30&show_border=true&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff" style="width:120px;height:240px;"></iframe> <iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http:////ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=vectraspace-20&marketplace=amazon&region=US&placement=B00J0H6NNM&asins=B00J0H6NNM&linkId=bb19e188296b6efc45d7821ef062f92e&show_border=true&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff" style="width:120px;height:240px;"></iframe></td>
+										<td><iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http://ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=vectraspace-20&marketplace=amazon&region=US&placement=B07CXKDJ7X&asins=B07CXKDJ7X&linkId=b55582b1e82419fafecc9d0e49729465&show_border=true&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff" style="width:120px;height:240px;"></iframe></td>
+									</tr>
+									<tr>
+										<th scope="row">Notes:</th>
+										<td>Warps at tempratures exceding 40°C meaning it is not suitible for use in outdoor or non-controlled environments.<br>
+										<br>
+										Diameter 1.75mm / 3.0mm<br>
+										Diameter Tolerance ±0.05 mm<br>
+										Ovality Tolerance ±0.01 mm<br>
+										Melting 200°C<br>
+										Extrusion Temperature 170°C to 218°C<br></td>
+										<td>Due to being recycled the Plastic can vary in properties. Thus making it unreliable for a final real world robotic arm unless aquired from a trusted source.<br>
+										<br>
+										Diameter 1.75mm / 3.0mm<br>
+										Diameter Tolerance ±0.05 mm<br>
+										Ovality Tolerance ±0.01 mm<br>
+										Melting 200°C<br>
+										Extrusion Temperature 170°C to 218°C<br></td>
+										<td>None</td>
+									</tr>
+								</tbody>
+							</table><a name="G2Pulley"></a><br>
+							<h3>G2 Pulley:</h3>
+							<p>The G2 Pulley is the main type of pulley used in the robotic arm, it allows the system's G2 belts to spin around an axis with extreme precision using the engraved teeth. G2 belts and pulleys are commonly used in the producing of machines such as CNCs and 3D printers. They allow the movement of two or more different pulleys in the same direction and are reinforced with stainless steel cables to prevent expanding of the belt under pressure and thus minimizing output inconsistencies. The setup used in the 3D model below is not used throughout the design and only the actual pulley is used. At times the pulley is also modified to act as a bearing to position the belts in the correct location within the Robotic Arm Frame as seen in the models below.</p>
+							<div class="sketchfab-embed-wrapper">
+								<iframe frameborder="0" height="480" src="https://sketchfab.com/models/5e39ab4c64584c8b92ebe7a8c8c527e4/embed?autospin=0.2&amp;autostart=1" width="100%"></iframe>
+								<p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/models/5e39ab4c64584c8b92ebe7a8c8c527e4?utm_medium=embed&utm_source=website&utm_campain=share-popup" style="font-weight: bold; color: #1CAAD9;" target="_blank">G2 Pulley</a> by <a href="https://sketchfab.com/theawsomeminer2?utm_medium=embed&utm_source=website&utm_campain=share-popup" style="font-weight: bold; color: #1CAAD9;" target="_blank">Jayden Downes</a> on <a href="https://skfb.ly/6zD9E" style="font-weight: bold; color: #1CAAD9;" target="_blank">Sketchfab</a></p>
+							</div><br>
+							<table class="table table-bordered table-striped">
+								<tbody>
+									<tr>
+										<th scope="row">Profile</th>
+										<td><img src="http://www.sdp-si.com/products/details/belt-detail-images/GT2-belt-profile.png"></td>
+									</tr>
+									<tr>
+										<th scope="row">Pitch</th>
+										<td>2 mm</td>
+									</tr>
+									<tr>
+										<th scope="row">Pitch Length</th>
+										<td>152 teeth per ft. (500 teeth per meter)</td>
+									</tr>
+									<tr>
+										<th scope="row">Standard Widths</th>
+										<td>.236, .354 &amp; .472 in. (6, 9 &amp; 12 mm)</td>
+									</tr>
+									<tr>
+										<th scope="row">Material</th>
+										<td>Nylon Covered Neoprene Belt, Fiberglass Reinforced, Stainless Steel.</td>
+									</tr>
+								</tbody>
+							</table><br>
+                            <a name="3PartPulley"></a>
+							<br>
+							<h3>3 Part Pulley:</h3>
+							<p>The Three-Part Pulley is the main pulley which is used as a positioning system for the belts in order to keep them in the correct location within the Robotic Arm Frame. The bearing pulleys have a bearing each 180 degrees in order to prevent the belt from drifting off to one side when the robotic arm is not in an upright (straight) position.</p><br><h5>Evaluation:</h5><p>As can be seen in the model below the G2 Pulleys are longer then the parallel bearings, this later caused issues and was replaced with the same type of pulley as seen in the middle position and the pulley on the right was fixed to the cover and frame before 3D printing, this allows for a stronger bond due to the print angle and thicker layers (decreasing possible failure points).</p>
+							<div class="sketchfab-embed-wrapper">
+								<iframe frameborder="0" height="480" src="https://sketchfab.com/models/461d34c63b194362b2b0289bd00b186a/embed?autospin=0.2&amp;autostart=1" width="100%"></iframe>
+								<p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/models/461d34c63b194362b2b0289bd00b186a?utm_medium=embed&utm_source=website&utm_campain=share-popup" style="font-weight: bold; color: #1CAAD9;" target="_blank">3-Part-Pulley</a> by <a href="https://sketchfab.com/theawsomeminer2?utm_medium=embed&utm_source=website&utm_campain=share-popup" style="font-weight: bold; color: #1CAAD9;" target="_blank">Jayden Downes</a> on <a href="https://skfb.ly/6zD9E" style="font-weight: bold; color: #1CAAD9;" target="_blank">Sketchfab</a></p>
+							</div><br>
+                            <a name="Frame"></a>
+							<br>
+							<h3>Frame:</h3>
+							<p>The frame makes up the most part of the robotic arms area. It is made of structural steel beams that are placed inside of an aluminum shell that is coated in rubber to prevent damages to the frame upon being hit by objects. It also prevents concrete or other building materials from sticking to the frame in a building environment. Due to this project being in a prototyping phase it is made out of PLA (Polylactic acid) Plastic as it is strong and brittle [not flexible], and can withstand outside temperatures after the hardening process.</p>
+							<div class="sketchfab-embed-wrapper">
+								<iframe frameborder="0" height="480" src="https://sketchfab.com/models/66c047d92c824ea691ebf91f49ad74bd/embed?autospin=0.2&amp;autostart=1" width="100%"></iframe>
+								<p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/models/66c047d92c824ea691ebf91f49ad74bd?utm_medium=embed&utm_source=website&utm_campain=share-popup" style="font-weight: bold; color: #1CAAD9;" target="_blank">Frame Section</a> by <a href="https://sketchfab.com/theawsomeminer2?utm_medium=embed&utm_source=website&utm_campain=share-popup" style="font-weight: bold; color: #1CAAD9;" target="_blank">Jayden Downes</a> on <a href="https://skfb.ly/6zD9E" style="font-weight: bold; color: #1CAAD9;" target="_blank">Sketchfab</a></p>
+							</div><br>
+                            <a name="TurnMechanism"></a>
+							<br>
+							<h3>Turn Mechanism:</h3>
+							<p>The turning mechanism is responsible for positioning the Pulley System. Its main purpose is to ensure the belts are always in line with the center of each frame so the two systems never come into contact. The turning mechanism works by one cylindrical plate being fastened to the frame section and the other being locked into the turning mechanism its self. This allows one of the designated pulleys/belts to drive the section of the frame.<br></p>
+							<h5>Evaluation:</h5>This part underwent many prototypes due to issues with the; Pulley Lengths (Colliding with the Turn Mechanism), One face of the turning mechanism had locks on it which prevented movement and the cylindrical turn plate tolerances being too tight for a smooth movement in the robotic arm sections.
+							<p></p>
+							<div class="sketchfab-embed-wrapper">
+								<iframe frameborder="0" height="480" src="https://sketchfab.com/models/f78faaac472f4c61947f4e066b72fd22/embed?autospin=0.2&amp;autostart=1" width="100%"></iframe>
+								<p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/models/f78faaac472f4c61947f4e066b72fd22?utm_medium=embed&utm_source=website&utm_campain=share-popup" style="font-weight: bold; color: #1CAAD9;" target="_blank">Turning Mechanism</a> by <a href="https://sketchfab.com/theawsomeminer2?utm_medium=embed&utm_source=website&utm_campain=share-popup" style="font-weight: bold; color: #1CAAD9;" target="_blank">Jayden Downes</a> on <a href="https://skfb.ly/6zD9E" style="font-weight: bold; color: #1CAAD9;" target="_blank">Sketchfab</a></p>
+							</div><br>
+														<br>
+							<h3>Updated Turn Mechanism:</h3>
+							<p>The updated turning mechanism is as follows.<br></p>
+							<div class="sketchfab-embed-wrapper">
+								<iframe frameborder="0" height="480" src="https://sketchfab.com/models/e6e2cabfd51c4a44a1219e0c67528525/embed?autospin=0.2&amp;autostart=1" width="100%"></iframe>
+								<p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/models/f78faaac472f4c61947f4e066b72fd22?utm_medium=embed&utm_source=website&utm_campain=share-popup" style="font-weight: bold; color: #1CAAD9;" target="_blank">Updated Turning Mechanism</a> by <a href="https://sketchfab.com/theawsomeminer2?utm_medium=embed&utm_source=website&utm_campain=share-popup" style="font-weight: bold; color: #1CAAD9;" target="_blank">Jayden Downes</a> on <a href="https://skfb.ly/6zD9E" style="font-weight: bold; color: #1CAAD9;" target="_blank">Sketchfab</a></p>
+							</div><br>
+
+							<br>
+							<h3>Final video:</h3>
+							<div class="sketchfab-embed-wrapper">
+								<video poster="poster.jpg" id="player" playsinline controls>
+    <source src="video.mp4" type="video/mp4">
+    <source src="video.webm" type="video/webm">
+
+    <!-- Captions are optional -->
+    <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default>
+</video>
+							</div><br>
+
+                            <a name="journal"></a>
+							<br>
+							<br>
+							<h3>Time Plan &amp; Journal:</h3><br>
+							<table class="table table-bordered table-striped">
+								<tbody>
+									<tr>
+										<th scope="row">9<sup>th</sup> Febuary</th>
+										<td>Introduction to Task 3</td>
+										<td>Introduction to Task 3 - Research, gather, sort, analyse information in order to plan, design, make and evaluate a pneumatic Robotic Arm.</td>
+									</tr>
+									<tr>
+										<th scope="row">16<sup>th</sup> Febuary</th>
+										<td>Timeplan Layout + Design Brief</td>
+										<td>
+											Design <a href="#timeplan">Timeplan</a> and set out a Design Brief for the Robotic Arm (What is it being made for / Purpose).
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">23<sup>rd</sup> Febuary</th>
+										<td>Analysis</td>
+										<td>
+											<a href="#analysis">Analysis</a> on what current designs include and their advantages, disadvantages &amp; what they include.
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">1<sup>st</sup> March</th>
+										<td>Research on 3 Designs</td>
+										<td>Drawings of Robotic Arms already made and what are their specifications, advantages &amp; disadvantages.</td>
+									</tr>
+									<tr>
+										<th scope="row">9<sup>th</sup> March</th>
+										<td>Material Analysis + Specification</td>
+										<td>
+											<a href="#specification">Material Analysis / Specification</a> on what materials could be used fro the final production in a production environment and what requirements does the final design need to follow.
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">16<sup>th</sup> March</th>
+										<td>Concepts</td>
+										<td>
+											<a href="#concepts">Concepts</a> on diffrent componenets of the Robotic Arm (Base, Mechanisms, Frame, Claw)
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">23<sup>rd</sup> March</th>
+										<td>Final Model Concpet Design</td>
+										<td>
+											A <a href="#finalconcept">Concept drawing / model</a> that incorperates ideal parts functioning together from the previous concepts - this includes the materials and measurements which are tied into the cad model.
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">6<sup>th</sup> &amp; 13<sup>th</sup> April</th>
+										<td>Prototyping in CAD</td>
+										<td>Prototyping for final design in CAD to test if the main components (Pulley Mechanisms and Frame) will work together and function as required.</td>
+									</tr>
+									<tr>
+										<th scope="row">3<sup>rd</sup>, 4<sup>th</sup>, 7<sup>th</sup>, 8<sup>th</sup> &amp; 10<sup>th</sup> May</th>
+										<td>TurboCad Lessions - Lukas De Klerk</td>
+										<td>Introduction &amp; Explination of Modification Tools, Drawing Tools, Basic Functions + Selecting, Settings (Measurements - Metric/Imperial).</td>
+									</tr>
+									<tr>
+										<th scope="row">11<sup>th</sup>, 14<sup>th</sup> &amp; 15<sup>th</sup> May</th>
+										<td>CAD - 123D Design / Fusion 360 - Base + Mechanisms.</td>
+										<td>Transformation from Concept Drawings to CAD (123D Design / Fusion 360) - Includes Evaluation and Prototyping of the Final / Proposed Part.</td>
+									</tr>
+									<tr>
+										<th scope="row">17<sup>th</sup>, 18<sup>th</sup>, 21<sup>st</sup> &amp; 22<sup>nd</sup> May</th>
+										<td>CAD - 123D Design / Fusion 360 - Base + Mechanisms.</td>
+										<td>Transformation from Concept Drawings to CAD (123D Design / Fusion 360) - Includes Evaluation and Prototyping of the Final / Proposed Part.</td>
+									</tr>
+									<tr>
+										<th scope="row">24<sup>th</sup>, 25<sup>th</sup>, 28<sup>th</sup> &amp; 29<sup>th</sup> May</th>
+										<td>CAD - 123D Design / Fusion 360 - Master Claw Layout &amp; Design.</td>
+										<td>Transformation from Concept Drawings to CAD (123D Design / Fusion 360) - Includes Evaluation and Prototyping of the Final / Proposed Part.</td>
+									</tr>
+									<tr>
+										<th scope="row">May 31<sup>st</sup>, 1<sup>st</sup>, 5<sup>th</sup>, 7<sup>th</sup> &amp; 8<sup>th</sup> June</th>
+										<td>CAD - 123D Design / Fusion 360 - Fixing Errors between diffrent parts.</td>
+										<td>Transformation from Concept Drawings to CAD (123D Design / Fusion 360) - Includes Evaluation and Prototyping of the Final / Proposed System.</td>
+									</tr>
+									<tr>
+										<th scope="row">11<sup>th</sup>, 12<sup>th</sup>, 14<sup>th</sup> &amp; 15<sup>th</sup> June</th>
+										<td>CAD - 123D Design / Fusion 360 - 2D/3D Renders of Parts + Drawings of Models.</td>
+										<td>Transformation of parts from CAD (123D Design / Fusion 360) into JPG/JPEG <small>[More Colours]</small> and PNG <small>[Transparcency]</small> Images for Web - Includes Evaluation of the Final / Proposed Renders.</td>
+									</tr>
+									<tr>
+										<th scope="row">18<sup>th</sup>, 19<sup>th</sup>, 21<sup>st</sup> &amp; 22<sup>nd</sup> June</th>
+										<td>Printing and Building Design</td>
+										<td>Parts were printed in White Polylactic Acid (a biodegradable and bioactive thermoplastic aliphatic polyester derived from renewable resources) on a FDM 3D Printer (Flashforge Creator Pro's) - Some Parts took up to 48 Hours to Print due to limitations on speeds avaliable due to the 3D printer Hoteneds and limited printers being avaliable due to the ending of the semester and abundance of other year's projects that also required printing.</td>
+									</tr>
+									<tr>
+										<th scope="row">25<sup>th</sup>, 26<sup>th</sup>, 28<sup>th</sup> &amp; 29<sup>th</sup> June</th>
+										<td>Evaluation of Parts and Functionality + Finalising Theory</td>
+										<td>Parts that were faulty were reprinted and/or redesigned. Theory work was also checked - This includes going though the Task 3 Merking Criteria to ensure all Items were included as specified.</td>
+									</tr>
+									<tr>
+										<th scope="row">16<sup>th</sup> July</th>
+										<td>Reprints &amp; Rebuidling reprinted Parts + Testing Final Design</td>
+										<td>Reprinting Parts that had errors in them or that didn't print correctly. Parts that were printed were rebuilt into the Robotic Arm and tests and evaluations where conducted.</td>
+									</tr>
+								</tbody>
+							</table><a name="ToolsSafety"></a><br>
+							<h3>Tools and Safety:</h3>
+							<p>"A team of scientists has published a study that details the health hazards of 3D printing in enclosed spaces, which it says causes the release of toxic and carcinogenic particles." For this reason, it is recommended to keep 3D printers in a well-ventelated environment. The same can be said for laser cutters as dangerous gasses can be expelled from the machine when cutting Synthetic polymers such as; plastics like polyethylene, polycarbonate, polypropylene, as well as synthetic rubber, polyvinyl chloride (PVC), polyethylene, phosgene and many other materials.</p><br>
+                            
+                            <a name="ProductionSequance"></a><br>
+                            <h3>Production Sequance</h3><br>
+                            <h6>Step 1 - Research and Design</h6>
+                            <p>Research, gather, sort, analyze information in order to plan, design. This includes searching designs of what others and have done, look at their designs and look at their advantages and disadvantages as well as ways you would improve it. List down the good and bad things you have taken away from the design as these can be used when you come to your product design. The main advice here is to make your product better than everyone else, otherwise, no one will ever buy it. After doing your research you can head on your way to designing. When designing it is always important to have an idea of what you want as your end product and how you are going to achieve it, usually, this is where concepts and brainstorms come into play. If you have no idea how to make something look good then it is recommended to look at other peoples designs and use them as inspiration for your own project, don't bother about visual elements and conventions such as the Rule of Thirds, rules are made to be broken and while they are a good base for any project, they aren't required to make a project/design good. If you are uncertain on designing or engineering a certain mechanism that you will use in your arm it is always a good idea to try out a prototype and get other peoples honest opinions on the design, they may have something to add. Also, remember not to over complicate the design process, most of the time the mechanisms you need to make something already exist and there is no point in reinventing the wheel, you are just wasting time.</p><br>
+                             <h6>Step 2 - CAD</h6>
+                            <p>After you have thought up your design for all the components of your arm it is time to draw it up in CAD, this allows us the flexibility to use different fabrication methods to make the design later. Some recommended programs for this include Fusion360 and TurboCad, Fusion360 can be found for free under an educational license while TurboCad is a paid program although they do offer student discounts. It's important to note that the price of a program generally doesn't depict its quality and it's recommended to get recommendations for what program to use as certain programs can be harder to use or not be practical / suitable for your application.<br> Most CAD programs work off the idea that you will first draw in your 2D face and off that extrude parts to a 3D plane and modify them from this, tutorials for your specific CAD program can usually be found online. <br>At this stage you should also look into possibilities of mass production and how you plan to produce your model fast and efficiently, generally this is through the use of automated machines including injection moulding or using CNC's (Laser Cutters, 3D Printers. All use cartesian plane movement and highly accurate stepper motors in order to make parts precisely by using tools specific to that machine), this needs to be done at this step and not during the researching and design as without knowing our almost final design it is hard to choose the best production method.</p><br>
+                             <h6>Step 3 - Producing and Evaluating</h6>
+                            <p>Once we have all our components modeled up in CAD we can now produce them. When producing parts we first produce a prototype which is generally less expensive than the final model and uses cheaper materials, this is because a majority of our parts will be changed in this stage if we didn't do our research on the materials and machines we planned to use and we didn't take into consideration the tolerances of the machine or its tool. Most of the time these tolerances also vary from machine to machine or online research that was already done on tolerances may not be suited towards the materials or methods you are using. Some information on tolerances can be found <a href="http://www2.mae.ufl.edu/designlab/Lab%20Assignments/EML2322L-Tolerances.pdf">here</a>. You may also find that certain mechanisms or systems you have made don't function as intended and these will likely have to be improved or replaced in this stage. Although not always practical in some applications, it is a good idea to test designs functionality in CAD to save resources, time and money. In programs like Fusion360, this can be done within the program most of the time due to parts being able to rotate and move around fixed or fluid points and axis's, this means we only really need to test for functionality and tolerances when we do our prototype before our final production model.<br>Your final production model will likely be made out of the materials you originally proposed in your research, consider using machines like CNC's, 3D Printers and Laser Cutters for your final design as you will find they make parts precisely compared to previous parts if you have been making them manually (In that case most of your tolerances wouldn't have of mattered as trial and error is an easy method in machining once you have a fairly accurate estimate of tolerances). </p>
+                            <a name="references"></a>
+                            <br> 
+							<br>
+							<h3>References</h3><br>
+                            <p>Amazon.com. (2018). Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs &amp; more. [online] Available at: https://www.amazon.com/ [Accessed 25 Jun. 2018].</p>
+                            <br>
+                            <p>Ars Electronica Center (2017). Industrial Robots in the Service of Art. [image] Available at: https://www.aec.at/aeblog/files/2017/03/Johannes-Braumann_Robot-Doing-Nothing_886x590.jpg [Accessed 1 Mar. 2018].</p>
+                            <br>
+                            <p>Cults (n.d.). BCN3D MOVEO - A FULLY OPENSOURCE 3D PRINTED ROBOT ARM. [image] Available at: https://files.cults3d.com/uploaders/11417472/illustration-file/1469701655-32610-6170/IMG_7106_ok_large.jpg [Accessed 1 Mar. 2018].</p>
+                            <br>
+                            <p>Gideon Hillman Consulting (n.d.). 26 best Robotic Process Automation. [image] Available at: https://i.pinimg.com/736x/77/d7/4f/77d74fb8faf71c6c68663f600463e46b--industrial-robots-robot-kits.jpg [Accessed 1 Mar. 2018].</p>
+                            <a name="evaluation"></a>
+							<br>
+							<br>
+                            <h3>Evaluation</h3><br>
+                            <p>The design proposed in this project compensates for the lack of automation in the construction industry and minimalizes the amount of time and resources needed to build houses and larger structures. The Robotic arm is robust, although only being made out of plastic at the current stage, it is also highly modular and can be easily fixed upon parts breaking. The three-axis' allow for a more fluid movement and also allows the arm to reach into places a regular two axis crane wouldn't be able to reach. Currently there are some issues in the design with tolerances between moving parts, this is due to 3D Print Slicing which has to compensate for a 0.3mm nozzle, meaning parts will most likely always have a size divisible by 0.3mm, to compensate for this parts have been sanded down to reach the proper dimensions as scaling it down will likely still have the same issue. Another problem occurred during this project was the accuracy of the 3D Printers and Laser Cutters, due to their Stepper Motor and "Tool" Accuracy. This made printing certain parts like bevel gears hard as they would come out with inconsistent results and/or not be good enough quality to use in a final working design, to get around this an SLA (Stereolithography) Printer was used for gear components. SLA printing uses either a LCD or a fine and well-focused UV laser to cure UV sensitive resin. This laser usually has a lot more idealistic results in terms of print quality compared to FDM printing but the machines themselves cost a lot more and are expensive to run, with 1KG of resin costing an up of $200+. This will not be an issue in the final product due to the parts being scaled up exponentially and being manufactured on more precise machines that what we currently don't have available for the prototype. Good parts of this design include the turn mechanism idea, but this could still be improved by swithcing over to stainless steel rods and pulleys in the future product due to belts sliping from being too tight and parts warping under tension of the G2 timing belt.</p>
+							<br>
+							<br>
+							<h3>Downloads</h3><br>
+							<a class="btn btn-lg btn-default" href="https://drive.google.com/file/d/1C_uSSeZsutpNz_el_-zN7k7JMb6UhA83/view?usp=sharing"><span class="glyphicon glyphicon-cloud-download"></span> Download Model Files (.ZIP)</a> <a class="btn+
+                                btn-lg btn-default" href="photos" target="_blank"><span class="glyphicon glyphicon-cloud-download"></span> Download/View Design Photos</a> <a class="btn btn-lg btn-default" href="concepts" target="_blank"><span class="glyphicon glyphicon-cloud-download"></span> Download/View Concepts &amp; Brainstorms</a>   <a class="btn btn-lg btn-default" href="cut-print-list" target="_blank"><span class="glyphicon glyphicon-cloud-download"></span> Cutting / Printing List</a> <!--    <div
+                            class="p-t-b-40">
+                        <div class="lightSlider" data-item="1" data-center-slide="true">
+                            <div class="item">
+                                <img src="assets/img/demo/n1.jpg" alt="">
+                            </div>
+                            <div class="item">
+                                <img src="assets/img/dummy/un2.jpg" alt="">
+                            </div>
+                        </div>
+                    </div> -->
+						</article>
+					</div>
+				</div><!--   <div class="feedback">
+            <div class="container">
+                <div class="col-xl-8 mx-md-auto">
+                    <p><span class="count">250 people found this article helpful what about you?</span>
+                        <a
+                                class="feedback-btn" href="#"><span class="icon-yes"></span>
+                        </a> <a class="feedback-btn" href="#"><span class="icon-not"></span></a>
+                    </p>
+                </div>
+            </div>
+        </div> -->
+			</div>
+		</main>
+	</div><!--End Page page_wrrapper -->
+	<script src="assets/js/app.js">
+	</script>
+    <!-- Tiny script to hide contents section and make the page a bit neater -->
+    <script type="text/javascript">
+   function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+   }
+</script>
+<script src="https://cdn.plyr.io/3.4.3/plyr.js"></script>
+</body>
+</html>
+
+<!-- Website Designed and Coded by Jayden Downes (Jayden@Vectra.Space) Under The GNU GPLv3 Licence -->
+<!-- See licence.txt for more infomation on the GNU GPLv3 Lience -->
+<!-- This project is also avaliable on GitHub at: https://github.com/JaydenDownes/Altra-01-Robotic-Arm-Documentation -->
