@@ -1,0 +1,88 @@
+/*
+ Theme Name:   Addison Child
+ Theme URI:    http://addison.bold-themes.com
+ Description:  Addison Child Theme
+ Author:       BoldThemes
+ Author URI:   http://bold-themes.com
+ Template:     addison
+ Version:      1.0.0
+ Tags:         one-column, right-sidebar, custom-menu, featured-images, sticky-post, theme-options, threaded-comments, translation-ready
+ Text Domain:  addison-child
+*/
+
+
+/* Theme customization starts here
+-------------------------------------------------------------- */
+
+/* Page Headline */
+.btPageHeadline .bt_bb_headline h1 {
+    font-size: 3.2em !important;
+}
+.btPageHeadline .bt_bb_headline .bt_bb_headline_superheadline {
+    display: none;
+}
+/*.btPageHeadline .bt_bb_port {
+    padding-bottom: 4em !important;
+    padding-top: 4em !important;
+}*/
+
+/* Sidebar Title */
+.btBox h4 {
+	font-size: 1.1em !important;
+}
+
+@media (max-width: 768px) { 
+    aside { 
+        display: none; 
+    } 
+}
+
+.bt_bb_section[class*="light_solid"]:before {
+    background-color: transparent !important;
+}
+
+/* Headline element */
+.bt_bb_headline .bt_bb_headline_superheadline {    
+    font-weight: 600;
+}
+.bt_bb_size_medium.bt_bb_headline .bt_bb_headline_subheadline {
+    font-size: 1.4em !important;
+    line-height: 1.5 !important;
+}
+
+/* Icon Widget */
+.topBarInLogoArea .btIconWidget .btIconWidgetContent .btIconWidgetTitle, .btContentHolder .btIconWidget .btIconWidgetContent .btIconWidgetTitle {
+    font-size: 0.9em !important;
+    color: inherit !important;
+    font-weight: 400 !important;
+}
+.topBarInLogoArea .btIconWidget .btIconWidgetContent .btIconWidgetText, .btContentHolder .btIconWidget .btIconWidgetContent .btIconWidgetText {
+    font-size: 1.1em !important;
+    font-weight: 700 !important;
+}
+
+/* Accordions */
+.bt_bb_style_simple.bt_bb_accordion .bt_bb_accordion_item .bt_bb_accordion_item_title {
+    border-top: 1px solid rgba(0,0,0,.2) !important;
+}
+.bt_bb_accordion_item_title:before {
+    content: "\f067";
+    line-height: 56px;
+    font-family: FontAwesome;
+    font-size: 28px;
+    display: inline-block;
+    width: 56px;
+    text-align: center;
+    color: black;
+    float: right;
+    margin-top: -2%;
+}
+.bt_bb_accordion_item.on .bt_bb_accordion_item_title:before {
+    content: "\f068";
+}
+
+/*Logo*/
+
+.btLogoArea .logo img {
+	height: 60px !important;
+}
