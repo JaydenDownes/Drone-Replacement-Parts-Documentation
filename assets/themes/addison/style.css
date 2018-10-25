@@ -668,9 +668,6 @@ html,
 body {
     min-height: 100vh;
     }
-body:not(.btPageTransitions) {
-    min-height: 101vh;
-    }
 html {
     overflow-x: hidden;
     }
@@ -722,7 +719,7 @@ body.rtl {
     padding: 0 40px;
     }
 .gutter .port {
-    max-width: 1280px;
+    max-width: 1100px;
     margin: auto;
     }
 .btWithSidebar .btContent .gutter .port {
@@ -7166,7 +7163,7 @@ table.shop_table input[name="update_cart"] {
 .bt_bb_size_extralarge.bt_bb_headline h4,
 .bt_bb_size_extralarge.bt_bb_headline h5,
 .bt_bb_size_extralarge.bt_bb_headline h6 {
-    font-size: 5.33em;
+    font-size: 3.33em;
     }
 .bt_bb_size_extralarge.bt_bb_headline h1 .bt_bb_headline_superheadline,
 .bt_bb_size_extralarge.bt_bb_headline h2 .bt_bb_headline_superheadline,
