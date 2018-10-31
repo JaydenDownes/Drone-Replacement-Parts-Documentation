@@ -1,4 +1,4 @@
-/* 
+/*
 Theme Name: Addison
 Theme URI: http://addison.bold-themes.com
 Description: Responsive theme.
@@ -18,7 +18,7 @@ All HTML/CSS/JAVASCRIPT code is released under Envato's Regular/Extended License
 1. Base
 2. Typography
 3. Bootstrap grid
-4. Bold themes grid 
+4. Bold themes grid
 5. Template
 6. Header
 7. Footer
@@ -734,11 +734,11 @@ body.rtl {
     }
 }
 
-/*@media (max-width: 768px) { 
+/*@media (max-width: 768px) {
 	.gutter .port {
-		.btWithSidebar .btContent & { 
+		.btWithSidebar .btContent & {
 			padding-left: $(pagePadding)px;
-			padding-right: $(pagePadding)px;		
+			padding-right: $(pagePadding)px;
 		}
 	}
 }*/
@@ -7115,7 +7115,7 @@ table.shop_table input[name="update_cart"] {
 .bt_bb_size_normal.bt_bb_headline h4,
 .bt_bb_size_normal.bt_bb_headline h5,
 .bt_bb_size_normal.bt_bb_headline h6 {
-    font-size: 2em;
+    font-size: 1.6em;
     }
 .bt_bb_size_normal.bt_bb_headline h1 .bt_bb_headline_superheadline,
 .bt_bb_size_normal.bt_bb_headline h2 .bt_bb_headline_superheadline,
